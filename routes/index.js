@@ -18,7 +18,7 @@ router.post('/activate-gas-address', activategaspumpAddress)
 router.get('/custodial/wallet-pKey', getwalletPrivatekey)
 router.post('/create/notification', createNotification)
 router.post('/create/btcTransaction', createBtcTransaction)
-router.get('/webhook', webhookServer)
+router.post('/webhook', webhookServer)
 
 
 

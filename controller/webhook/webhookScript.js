@@ -5,12 +5,7 @@ const { Transactions } = models;
 const webhookServer = async (req, res, next) => {
     try {
         const webhookData = req.body;
-
-        if (!isValidWebhookData(webhookData)) {
-            res.status(400).send('Invalid webhook data.');
-            return;
-        }
-
+        
         const existingTransaction = await Transactions.findOne({
             where: { transactionId: webhookData.txId }
         });
@@ -44,8 +39,5 @@ const webhookServer = async (req, res, next) => {
     }
 };
 
-const isValidWebhookData = (data) => {
-    return !!data && typeof data === 'object' && data.txId && data.currency && data.subscriptionType && data.counterAddress && data.address && typeof data.amount === 'number';
-};
 
 module.exports = { webhookServer };
